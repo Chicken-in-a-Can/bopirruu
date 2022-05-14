@@ -19,10 +19,12 @@ case $1 in
   -S)
     if [ "$2" != "" ]
     then
-      wget -o $pat/$2/install.sh $ip/repo/$2/install.sh
-      wget -o $pat/$2/remove.sh $ip/repo/$2/remove.sh
-      wget -o $pat/$2/${2^} $ip/repo/$2/${2^}
-      wget -o $pat/$2/info.txt $ip/repo/$2/info.txt
+      mkdir $pat/$2 > /dev/null 2>&1
+      mkdir $pat/$2/${2^} > /dev/null 2>&1
+      curl -o $pat/$2/install.sh $ip/repo/$2/install.sh
+      curl -o $pat/$2/remove.sh $ip/repo/$2/remove.sh
+      curl -o $pat/$2/${2^} $ip/repo/$2/${2^}
+      curl -o $pat/$2/info.txt $ip/repo/$2/info.txt
       sh $pat/$2/install.sh
     else
       echo "Please input a package"
@@ -32,6 +34,7 @@ case $1 in
     if [ "$2" != ""]
     then
       sh $pat/$2/remove.sh
+      rm -rf $pat/$2
     else
       echo "Please input a package"
     fi
