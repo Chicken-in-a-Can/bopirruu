@@ -21,18 +21,11 @@ case $1 in
     then
       mkdir $pat/$2 > /dev/null 2>&1
       mkdir $pat/$2/${2^} > /dev/null 2>&1
-      echo "Downloading"
-      curl -o $pat/$2/install.sh $ip/repo/$2/install.sh 2>&1
-      echo -ne '#####                 (25%)\r'
-      curl -o $pat/$2/remove.sh $ip/repo/$2/remove.sh 2>&1
-      echo -ne '##########            (50%)\r'
-      curl -o $pat/$2/${2^}/$2 $ip/repo/$2/${2^}/$2 2>&1
-      echo -ne '###############       (75%)\r'
-      curl -o $pat/$2/info.txt $ip/repo/$2/info.txt 2>&1
-      echo -ne '####################  (100%)\r'
-      echo -ne '\n'
-      echo "Downloaded, Installing..."
-      sh $pat/$2/install.sh 2>&1
+      curl -o $pat/$2/install.sh $ip/bor/$2/install.sh 2>&1
+      curl -o $pat/$2/remove.sh $ip/bor/$2/remove.sh 2>&1
+      corl -o $pat/$2/update.sh $ip/bor/$2/update.sh 2>&1
+      curl -o $pat/$2/info.txt $ip/bor/$2/info.txt 2>&1
+      sh $pat/$2/install.sh $ip
     else
       echo "Please input a package"
     fi
