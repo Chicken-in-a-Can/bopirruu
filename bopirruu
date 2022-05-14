@@ -46,6 +46,7 @@ case $1 in
     else
       echo "Please input a package"
     fi
+    ;;
     *)
     echo "Unknown Command. please run bopirruu --help for a list of commands"
     ;;
