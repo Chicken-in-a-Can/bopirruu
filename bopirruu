@@ -48,6 +48,6 @@ case $1 in
     fi
     ;;
     *)
-    echo "Unknown Command. please run bopirruu --help for a list of commands"
+      echo "Unknown Command. please run bopirruu --help for a list of commands"
     ;;
 esac
