@@ -1,7 +1,8 @@
 #!/bin/bash
 
+uer=$(logname)
 ip="10.5.32.1"
-pat="/home/$USER/.bopirruu"
+pat="/home/$uer/.bopirruu"
 
 if [[ $(id -u) -ne 0 ]]
 then
@@ -18,7 +19,7 @@ case $1 in
     echo "-U <package>          Update package <package>"
     ;;
   --setup)
-    mkdir /home/$USER/.bopirruu
+    mkdir /home/$uer/.bopirruu
     sudo mv bopirruu /usr/bin/
     sudo chmod +x /usr/bin/bopirruu
     ;;
