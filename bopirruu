@@ -1,25 +1,49 @@
 #!/bin/bash
 
-ip=""
-path="/home/$USER/.dawork"
+ip="10.5.32.1"
+pat="/home/$USER/.bopirruu"
 
 case $1 in 
   --help)
     echo "--help                Prints this help message"
+    echo "--setup               Sets up bopirruu"
     echo "-S <package>          Sync package <package>"
+    echo "-R <package>          Remove package <package>"
+    echo "-U <package>          Update package <package>"
+    ;;
+  --setup)
+    mkdir /home/$USER/.bopirruu
+    sudo mv bopirruu /usr/bin/
+    sudo chmod +x /usr/bin/bopirruu
     ;;
   -S)
     if [ "$2" != "" ]
     then
-      wget -o $path/$2/install.sh $ip/repo/$2/install.sh
-      wget -o $path/$2/$2 $ip/repo/$2/$2
-      wget -o $path/$2/info.txt $ip/repo/$2/info.txt
-      sh $path/$2/install.sh
+      wget -o $pat/$2/install.sh $ip/repo/$2/install.sh
+      wget -o $pat/$2/remove.sh $ip/repo/$2/remove.sh
+      wget -o $pat/$2/${2^} $ip/repo/$2/${2^}
+      wget -o $pat/$2/info.txt $ip/repo/$2/info.txt
+      sh $pat/$2/install.sh
     else
       echo "Please input a package"
     fi
     ;;
-  *)
+  -R)
+    if [ "$2" != ""]
+    then
+      sh $pat/$2/remove.sh
+    else
+      echo "Please input a package"
+    fi
+    ;;
+  -U)
+    if [ "$2" != "" ]
+    then
+      sh $pat/$2/update.sh $ip
+    else
+      echo "Please input a package"
+    fi
+    *)
     echo "Unknown Command. please run bopirruu --help for a list of commands"
     ;;
 esac
