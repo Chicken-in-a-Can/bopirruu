@@ -1,9 +1,23 @@
 #!/bin/bash
 
+ip=""
+path="/home/$USER/.dawork"
+
 case $1 in 
   --help)
     echo "--help                Prints this help message"
     echo "-S <package>          Sync package <package>"
+    ;;
+  -S)
+    if [ "$2" != "" ]
+    then
+      wget -o $path/$2/install.sh $ip/repo/$2/install.sh
+      wget -o $path/$2/$2 $ip/repo/$2/$2
+      wget -o $path/$2/info.txt $ip/repo/$2/info.txt
+      sh $path/$2/install.sh
+    else
+      echo "Please input a package"
+    fi
     ;;
   *)
     echo "Unknown Command. please run bopirruu --help for a list of commands"
