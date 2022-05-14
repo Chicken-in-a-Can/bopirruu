@@ -1,1 +1,11 @@
 #!/bin/bash
+
+case $1 in 
+  --help)
+    echo "--help                Prints this help message"
+    echo "-S <package>          Sync package <package>"
+    ;;
+  *)
+    echo "Unknown Command. please run bopirruu --help for a list of commands"
+    ;;
+esac
