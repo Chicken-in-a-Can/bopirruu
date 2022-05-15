@@ -120,7 +120,7 @@ def openPackagePage(featured = ""):
         installButton['state'] = "disabled"
         #ADD INSTALL COMMAND HERE, use packageAddress as package file location
         progressBar.start(25)
-        os.system("sudo bopirruu -S " + pName)
+        os.system("sudo bopirruu -R " + pName)
         
         
         def doneInstallingCommand():
