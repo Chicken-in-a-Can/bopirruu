@@ -71,7 +71,7 @@ case $1 in
     if [ "$2" != "" ]
     then
       zip -r $2.zip $2
-      curl -v -F file=$2.zip http://$ip/bopirruu.php?rxpkg
+      curl -v -F 'file=@"$2.zip"' http://$ip/bopirruu.php?rxpkg
       rm -f $2.zip
     else
       echo "Please input a valid package"
