@@ -40,7 +40,7 @@ case $1 in
     fi
     ;;
   -R)
-    if [ "$2" != ""]
+    if [ "$2" != "" ]
     then
       sh $pat/$2/remove.sh
       rm -rf $pat/$2
