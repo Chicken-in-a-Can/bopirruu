@@ -195,7 +195,7 @@ def uploadAction():
     
 fileLocationLabel = ttk.Label(uploadTab, text = "Package Location:", font = ("Times",12))
 fileLocationLabel.grid(column = 0, row = 0, padx = 10, pady = 10)
-fileUploadButton = ttk.Button(uploadTab, text = "Choose File:", command = uploadAction)
+fileUploadButton = ttk.Button(uploadTab, text = "Choose Path:", command = uploadAction)
 fileUploadButton.grid(column = 1, row = 0, padx = 10, pady = 10)
 
 
@@ -204,30 +204,11 @@ nameLabel.grid(column = 0, row = 2, padx = 10, pady = 10)
 nameText = tk.Entry(uploadTab, font = ("Times",12), width = 50)
 nameText.grid(column = 1, row = 2, padx = 10, pady = 10)
 
-versionLabel = ttk.Label(uploadTab, text = "Version Number:", font = ("Times",12))
-versionLabel.grid(column = 0, row = 3, padx = 10, pady = 10)
-versionText = tk.Entry(uploadTab, font = ("Times",12), width = 50)
-versionText.grid(column = 1, row = 3, padx = 10, pady = 10)
-
-architectureLabel = ttk.Label(uploadTab, text = "Architecture:", font = ("Times",12))
-architectureLabel.grid(column = 0, row = 4, padx = 10, pady = 10)
-architectureText = tk.Entry(uploadTab, font = ("Times",12), width = 50)
-architectureText.grid(column = 1, row = 4, padx = 10, pady = 10)
-
-descriptionLabel = ttk.Label(uploadTab, text = "Description:", font = ("Times",12))
-descriptionLabel.grid(column = 0, row = 5, padx = 10, pady = 10)
-descriptionText = tk.Text(uploadTab, font = ("Times",12), height = 5, width = 50)
-descriptionText.grid(column = 1, row = 5, padx = 10, pady = 10)
-
 # has all the required info for upload.
 def uploadCommand():
-    print("it no work yet")
-    #print(fileNameLabel['text']) #folder location for upload
-    #print(nameText.get()) #package name
-    #print(versionText.get()) #ver num
-    #print(architectureText.get()) #architecture
-    #print(descriptionText.get("1.0","end-1c")) #desc text
-                                               #reports will start at a default of 0
+    print(fileNameLabel['text']) #folder location for upload
+    print(nameText.get()) #package name
+    os.system("cd " + fileNameLabel['text'] + " && sudo bopirruu --upload " + nameText.get())
     
 uploadButton = ttk.Button(uploadTab, command = uploadCommand, text = "Upload Package")
 uploadButton.grid(column = 0, row = 6, padx = 10, pady = 10)
