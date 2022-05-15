@@ -132,8 +132,8 @@ def openPackagePage(featured):
     def uninstallCommand():
         progressBar = ttk.Progressbar(packageScreen, orient = "horizontal", mode = "indeterminate", length = 250)
         progressBar.grid(column = 0, row = 12, sticky = "W", padx = 10, pady = 10)
-        installButton['text'] = "Uninstalling..."
-        installButton['state'] = "disabled"
+        uninstallButton['text'] = "Uninstalling..."
+        uninstallButton['state'] = "disabled"
         progressBar.start(25)
         os.system("sudo bopirruu -R " + pName)
         
