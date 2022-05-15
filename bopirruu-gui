@@ -221,6 +221,7 @@ descriptionText.grid(column = 1, row = 5, padx = 10, pady = 10)
 
 # has all the required info for upload.
 def uploadCommand():
+    print("it no work yet")
     #print(fileNameLabel['text']) #folder location for upload
     #print(nameText.get()) #package name
     #print(versionText.get()) #ver num
