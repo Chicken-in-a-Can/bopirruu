@@ -132,8 +132,8 @@ def openPackagePage(featured):
     def uninstallCommand():
         progressBar = ttk.Progressbar(packageScreen, orient = "horizontal", mode = "indeterminate", length = 250)
         progressBar.grid(column = 0, row = 12, sticky = "W", padx = 10, pady = 10)
-        uninstallButton['text'] = "Uninstalling..."
-        uninstallButton['state'] = "disabled"
+        installButton['text'] = "Uninstalling..."
+        installButton['state'] = "disabled"
         progressBar.start(25)
         os.system("sudo bopirruu -R " + pName)
         
@@ -221,11 +221,11 @@ descriptionText.grid(column = 1, row = 5, padx = 10, pady = 10)
 
 # has all the required info for upload.
 def uploadCommand():
-    print(fileNameLabel['text']) #folder location for upload
-    print(nameText.get()) #package name
-    print(versionText.get()) #ver num
-    print(architectureText.get()) #architecture
-    print(descriptionText.get("1.0","end-1c")) #desc text
+    #print(fileNameLabel['text']) #folder location for upload
+    #print(nameText.get()) #package name
+    #print(versionText.get()) #ver num
+    #print(architectureText.get()) #architecture
+    #print(descriptionText.get("1.0","end-1c")) #desc text
                                                #reports will start at a default of 0
     
 uploadButton = ttk.Button(uploadTab, command = uploadCommand, text = "Upload Package")
