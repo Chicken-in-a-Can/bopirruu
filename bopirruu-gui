@@ -72,7 +72,7 @@ spacing.grid(column = 1, row = 0, sticky = "W")
 searchLabel = ttk.Label(homeTab, text = "Search Packages:", font = ("Times", 12))
 searchLabel.grid(column = 2, row = 0, sticky = "W", padx = 10, pady = 10)
 
-def openPackagePage(featured = ""):
+def openPackagePage(featured):
     pName = ""
     if (isinstance(featured, str)):
         pName = featured
