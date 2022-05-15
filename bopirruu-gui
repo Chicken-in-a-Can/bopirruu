@@ -144,6 +144,8 @@ def openPackagePage(featured = ""):
         requests.get(reportAddress)
         reportButton['state'] = "disabled"
         reportButton['text'] = "Reported"
+        reportVLabel = ttk.Label(packageScreen, text = "\t" + (int(arr[3])+1), font = ("Times",12))
+        reportVLabel.grid(column = 0, row = 8, sticky = "W", padx = 10, pady = 5)
     reportButton = ttk.Button(packageScreen, text = "Report", command = report)
     reportButton.grid(column = 1, row = 0, sticky = "W", padx = 10, pady = 10)
     
