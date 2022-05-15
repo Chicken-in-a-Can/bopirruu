@@ -14,6 +14,7 @@ case $1 in
   --help)
     echo "--help                Prints this help message"
     echo "--setup               Sets up bopirruu"
+    echo "--report <package>    Reports package"
     echo "-S <package>          Sync package <package>"
     echo "-R <package>          Remove package <package>"
     echo "-U <package>          Update package <package>"
@@ -50,6 +51,14 @@ case $1 in
     if [ "$2" != "" ]
     then
       sh $pat/$2/update.sh $ip
+    else
+      echo "Please input a package"
+    fi
+    ;;
+  --report)
+    if [ "$2" != "" ]
+    then
+      curl http://$ip/bopirruu.php?report=$2
     else
       echo "Please input a package"
     fi
