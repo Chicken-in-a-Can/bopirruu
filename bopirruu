@@ -15,6 +15,7 @@ case $1 in
     echo "--help                Prints this help message"
     echo "--setup               Sets up bopirruu"
     echo "--report <package>    Reports package"
+    echo "--upload <package>    Uploads package for distribution"
     echo "-S <package>          Sync package <package>"
     echo "-R <package>          Remove package <package>"
     echo "-U <package>          Update package <package>"
@@ -59,6 +60,14 @@ case $1 in
     if [ "$2" != "" ]
     then
       curl http://$ip/bopirruu.php?report=$2
+    else
+      echo "Please input a package"
+    fi
+    ;;
+  --upload)
+    if [ "$2" != "" ]
+    then
+      zip -r $2.zip $2
     else
       echo "Please input a package"
     fi
