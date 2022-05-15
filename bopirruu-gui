@@ -129,7 +129,17 @@ def openPackagePage(featured = ""):
             progressBar.destroy()
         doneInstallingCommand()
         
+    def uninstallCommand():
+        progressBar = ttk.Progressbar(packageScreen, orient = "horizontal", mode = "indeterminate", length = 250)
+        progressBar.grid(column = 0, row = 12, sticky = "W", padx = 10, pady = 10)
+        progressBar.start(25)
+        os.system("sudo bopirruu -R " + pName)
         
+        def doneInstallingCommand():
+            installButton['text'] = "Installed"
+            progressBar.stop()
+            progressBar.destroy()
+        doneInstallingCommand()
         
     packageAddressPHPAddress = f"http://{ip}/bopirruu.php?getpath={pName}"
     # packageAddressPHPAddress = "http://" + ip + "/bopirruu.php?getpath="+searchBar.get()
@@ -137,6 +147,9 @@ def openPackagePage(featured = ""):
     
     installButton = ttk.Button(packageScreen, text = "Install", command = installCommand)
     installButton.grid(column = 0, row = 11, sticky = "W", pady = 10, padx = 10)
+    
+    uninstallButton = ttk.Button(packageScreen, text = "Uninstall", command = uninstallCommand)
+    uninstallButton.grid(column = 1, row = 11, sticky = "W", pady = 10, padx = 10)
     
     exitButton = ttk.Button(packageScreen, text = "Exit", command = packageScreen.destroy)
     exitButton.grid(column = 0, row = 0, sticky = "W", padx = 10, pady = 10)
