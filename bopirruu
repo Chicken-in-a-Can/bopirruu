@@ -68,11 +68,13 @@ case $1 in
     fi
     ;;
   --upload)
-    if [ "$2" != "" ]
+    if [ "$2" != "" ] && [ ls $2 | grep -q "info.txt" ] && [ ls $2 | grep -q "update.sh" ] && [ ls $2 | grep -q "install.sh" ] && [ ls $2 | grep -q "remove.sh" ]
     then
       zip -r $2.zip $2
+      curl -F file=$2.zip http://$ip/bopirruu.php?rxpkg
+      rm -f $2.zip
     else
-      echo "Please input a package"
+      echo "Please input a valid package"
     fi
     ;;
     *)
