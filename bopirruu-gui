@@ -1,11 +1,12 @@
-#!/bin/python
-
 import tkinter as tk
 from tkinter import ttk
+from tkinter import filedialog
 import os
 import random
 import time
 import requests
+
+STQuotes = ["He will win who knows when to fight and when not to fight." ,"In the midst of chaos, there is also opportunity." ,"Victorious warriors win first and then go to war, while defeated warriors go to war first and then seek to win." ,"If you know the enemy and know yourself, you need not fear the result of a hundred battles. If you know yourself but not the enemy, for every victory gained you will also suffer a defeat. If you know neither the enemy nor yourself, you will succumb in every battle." ,"The greatest victory is that which requires no battle." ,"Quickness is the essence of the war." ,"Even the finest sword plunged into salt water will eventually rust." ,"The art of war is of vital importance to the State. It is a matter of life and death, a road either to safety or to ruin. Hence it is a subject of inquiry which can on no account be neglected." ,"There is no instance of a nation benefiting from prolonged warfare." ,"There are not more than five musical notes, yet the combinations of these five give rise to more melodies than can ever be heard. There are not more than five primary colours, yet in combination they produce more hues than can ever been seen. There are not more than five cardinal tastes, yet combinations of them yield more flavours than can ever be tasted." ,"Who wishes to fight must first count the cost." ,"You have to believe in yourself." ,"Build your opponent a golden bridge to retreat across." ,"One may know how to conquer without being able to do it." ,"What the ancients called a clever fighter is one who not only wins, but excels in winning with ease." ,"The wise warrior avoids the battle." ,"The whole secret lies in confusing the enemy, so that he cannot fathom our real intent." ,"One mark of a great soldier is that he fight on his own terms or fights not at all." ,"If the mind is willing, the flesh could go on and on without many things." ,"He who is prudent and lies in wait for an enemy who is not, will be victorious." ,"Anger may in time change to gladness; vexation may be succeeded by content. But a kingdom that has once been destroyed can never come again into being; nor can the dead ever be brought back to life." ,"There are roads which must not be followed, armies which must not be attacked, towns which must not be besieged, positions which must not be contested, commands of the sovereign which must not be obeyed." ,"Attack is the secret of defense; defense is the planning of an attack." ,"Great results can be achieved with small forces." ,"Opportunities multiply as they are seized." ,"If quick, I survive. If not quick, I am lost. This is death." ,"To secure ourselves against defeat lies in our own hands, but the opportunity of defeating the enemy is provided by the enemy himself." ,"Bravery without forethought, causes a man to fight blindly and desperately like a mad bull. Such an opponent, must not be encountered with brute force, but may be lured into an ambush and slain." ,"Wheels of justice grind slow but grind fine." ,"Never venture, never win!" ,"The skillful tactician may be likened to the shuai-jan. Now the shuai-jan is a snake that is found in the ChÆang mountains. Strike at its head, and you will be attacked by its tail; strike at its tail, and you will be attacked by its head; strike at its middle, and you will be attacked by head and tail both." ,"It is easy to love your friend, but sometimes the hardest lesson to learn is to love your enemy." ,"Be where your enemy is not." ,"Who does not know the evils of war cannot appreciate its benefits." ,"In battle, there are not more than two methods of attackûthe direct and the indirect; yet these two in combination give rise to an endless series of maneuvers." ,"Plan for what it is difficult while it is easy, do what is great while it is small." ,"The opportunity of defeating the enemy is provided by the enemy himself." ,"Foreknowledge cannot be gotten from ghosts and spirits, cannot be had by analogy, cannot be found out by calculation. It must be obtained from people, people who know the conditions of the enemy." ,"If you fight with all your might, there is a chance of life; where as death is certain if you cling to your corner." ,"Do not swallow bait offered by the enemy. Do not interfere with an army that is returning home." ,"When the outlook is bright, bring it before their eyes; but tell them nothing when the situation is gloomy." ,"The worst calamities that befall an army arise from hesitation." ,"If there is disturbance in the camp, the general's authority is weak." ,"Hence that general is skillful in attack whose opponent does not know what to defend; and he is skillful in defense whose opponent does not know what to attack." ,"Those skilled at making the enemy move do so by creating a situation to which he must conform; they entice him with something he is certain to take, and with lures of ostensible profit they await him in strength." ,"Energy may be likened to the bending of a crossbow; decision, to the releasing of a trigger." ,"When your army has crossed the border, you should burn your boats and bridges, in order to make it clear to everybody that you have no hankering after home." ,"There are five dangerous faults which may affect a general: (1) Recklessness, which leads to destruction; (2) cowardice, which leads to capture; (3) a hasty temper, which can be provoked by insults; (4) a delicacy of honor which is sensitive to shame; (5) over-solicitude for his men, which exposes him to worry and trouble." ,"Ponder and deliberate before you make a move." ,"Rewards for good service should not be deferred a single day." ,"Begin by seizing something which your opponent holds dear; then he will be amenable to your will." ,"If words of command are not clear and distinct, if orders are not thoroughly understood, then the general is to blame. But, if orders are clear and the soldiers nevertheless disobey, then it is the fault of their officers." ,"If his forces are united, separate them." ,"Move not unless you see an advantage; use not your troops unless there is something to be gained; fight not unless the position is critical." ,"The general who advances without coveting fame and retreats without fearing disgrace, whose only thought is to protect his country and do good service for his sovereign, is the jewel of the kingdom." ,"It is only the enlightened ruler and the wise general who will use the highest intelligence of the army for the purposes of spying, and thereby they achieve great results." ,"If soldiers are punished before they have grown attached to you, they will not prove submissive; ,you, punishments are not enforced, they will still be unless." ,"Convince your enemy that he will gain very little by attacking you; this will diminish his enthusiasm." ,"To fight and conquer in all our battles is not supreme excellence; supreme excellence consists in breaking the enemyÆs resistance without fighting." ,"Let your plans be dark and impenetrable as night, and when you move, fall like a thunderbolt." ,"All warfare is based on deception. Hence, when we are able to attack, we must seem unable; when using our forces, we must appear inactive; when we are near, we must make the enemy believe we are far away; when far away, we must make him believe we are near." ,"If your opponent is temperamental, seek to irritate him. Pretend to be weak, that he may grow arrogant. If he is taking his ease, give him no rest. If his forces are united, separate them. If sovereign and subject are in accord, put division between them. Attack him where he is unprepared, appear where you are not expected." ,"To know your enemy, you must become your enemy." ,"Thus we may know that there are five essentials for victory: (1) He will win who knows when to fight and when not to fight; (2) he will win who knows how to handle both superior and inferior forces; (3) he will win whose army is animated by the same spirit throughout all its ranks; (4) he will win who, prepared himself, waits to take the enemy unprepared; (5) he will win who has military capacity and is not interfered with by the sovereign." ,"Treat your men as you would your own beloved sons. And they will follow you into the deepest valley." ,"When the enemy is relaxed, make them toil. When full, starve them. When settled, make them move." ,"So in war, the way is to avoid what is strong, and strike at what is weak." ,"To win one hundred victories in one hundred battles is not the acme of skill. To subdue the enemy without fighting is the acme of skill." ,"Be extremely subtle even to the point of formlessness. Be extremely mysterious even to the point of soundlessness. Thereby you can be the director of the opponent's fate." ,"Thus the expert in battle moves the enemy, and is not moved by him." ,"Water shapes its course according to the nature of the ground over which it flows; the soldier works out his victory in relation to the foe whom he is facing." ,"The supreme art of war is to subdue the enemy without fighting." ,"Appear weak when you are strong, and strong when you are weak." ,"When one treats people with benevolence, justice, and righteousness, and reposes confidence in them, the army will be united in mind and all will be happy to serve their leaders." ]
 
 ip = "10.5.32.1"
 
@@ -20,8 +21,9 @@ def getPackageList(search):
 root = tk.Tk()
 root.title("Bopirru User Interface")
 
-root.geometry("700x270")
+root.geometry("850x400")
 
+random.shuffle(STQuotes)
 tabControl = ttk.Notebook(root)
 homeTab = ttk.Frame(tabControl)
 uploadTab = ttk.Frame(tabControl)
@@ -34,12 +36,33 @@ featuredTitle.grid(column = 0, row = 0, padx = 10, pady = 10, sticky = "W")
 
 allPackages = getPackageList("")
 random.shuffle(allPackages)
-featured1 = ttk.Label(homeTab, text = allPackages[0], font = ("Times",12))
-featured2 = ttk.Label(homeTab, text = allPackages[1], font = ("Times",12))
-featured3 = ttk.Label(homeTab, text = allPackages[3], font = ("Times",12))
+
+def fbf1():
+    openPackagePage(allPackages[0])
+def fbf2():
+    openPackagePage(allPackages[1])
+def fbf3():
+    openPackagePage(allPackages[2])
+featured1 = ttk.Button(homeTab, text = allPackages[0], command = fbf1)
+featured2 = ttk.Button(homeTab, text = allPackages[1], command = fbf2)
+featured3 = ttk.Button(homeTab, text = allPackages[2], command = fbf3)
 featured1.grid(column = 0, row = 1, padx = 10, pady = 10)
 featured2.grid(column = 0, row = 2, padx = 10, pady = 10)
 featured3.grid(column = 0, row = 3, padx = 10, pady = 10)
+
+STLabel = tk.Label(homeTab, text = "Sun Tzu Quote Of The Day:", font = ("Times", 12))
+STLabel.grid(column = 0, row = 4, pady = 10, padx = 10)
+dailyQuote = STQuotes[0]
+spaceCount = 0
+j = 0
+while j < len(dailyQuote):
+    if dailyQuote[j] == " ":
+        spaceCount +=1
+        if(spaceCount%5==0):
+            dailyQuote = dailyQuote[0:j] + "\n" + dailyQuote[j+1:]
+    j+=1
+STQuote = tk.Label(homeTab, text = "\"" + dailyQuote +"\"", font = ("Times",10))
+STQuote.grid(column = 0, row = 5, padx = 10, pady= 0)
 
 spacing = ttk.Label(homeTab, text = " "*10)
 spacing.grid(column = 1, row = 0, sticky = "W")
@@ -47,12 +70,17 @@ spacing.grid(column = 1, row = 0, sticky = "W")
 searchLabel = ttk.Label(homeTab, text = "Search Packages:", font = ("Times", 12))
 searchLabel.grid(column = 2, row = 0, sticky = "W", padx = 10, pady = 10)
 
-def openPackagePage(event):
+def openPackagePage(featured = ""):
+    pName = ""
+    if (isinstance(featured, str)):
+        pName = featured
+    else:
+        pName = searchBar.get()
     packageScreen = tk.Tk()
-    packageScreen.title(searchBar.get())
+    packageScreen.title(pName)
     packageScreen.geometry("600x600")
  
-    infoAddress = "http://" + ip + "/bopirruu.php?getinfo=" + searchBar.get()
+    infoAddress = "http://" + ip + "/bopirruu.php?getinfo=" + pName
     fileText = requests.get(infoAddress).text
     
     arr = fileText.split("<br />\n")
@@ -85,7 +113,7 @@ def openPackagePage(event):
     
     def installCommand():
         progressBar = ttk.Progressbar(packageScreen, orient = "horizontal", mode = "indeterminate", length = 250)
-        progressBar.grid(column = 0, row = 10, sticky = "W", padx = 10, pady = 10)
+        progressBar.grid(column = 0, row = 12, sticky = "W", padx = 10, pady = 10)
         installButton['text'] = "Installing..."
         installButton['state'] = "disabled"
         #ADD INSTALL COMMAND HERE, use packageAddress as package file location
@@ -99,7 +127,7 @@ def openPackagePage(event):
         
         
         
-    packageAddressPHPAddress = f"http://{ip}/bopirruu.php?getpath={searchBar.get()}"
+    packageAddressPHPAddress = f"http://{ip}/bopirruu.php?getpath={pName}"
     # packageAddressPHPAddress = "http://" + ip + "/bopirruu.php?getpath="+searchBar.get()
     packageAddress = "http://" + ip + "/" + requests.get(packageAddressPHPAddress).text
     
@@ -110,7 +138,10 @@ def openPackagePage(event):
     exitButton.grid(column = 0, row = 0, sticky = "W", padx = 10, pady = 10)
     
     def report():
-        print("reported jk lmao") #Add report functionality later
+        reportAddress = "http://" + ip + "/bopirruu.php?report="+pName
+        requests.get(reportAddress)
+        reportButton['state'] = "disabled"
+        reportButton['text'] = "Reported"
     reportButton = ttk.Button(packageScreen, text = "Report", command = report)
     reportButton.grid(column = 1, row = 0, sticky = "W", padx = 10, pady = 10)
     
@@ -130,6 +161,47 @@ currentPackageString.trace("w", updatePackageList)
 searchBar = ttk.Combobox(homeTab, values = packageList, height = 9, textvariable = currentPackageString)
 searchBar.grid(column = 3, row = 0, sticky = "E", pady = 10, padx = 10)
 searchBar.bind("<<ComboboxSelected>>", openPackagePage)
+
+#UPLOAD TAB
+fileNameLabel = ttk.Label(uploadTab, text = "", font = ("Times",12))
+filename = ""
+fileNameLabel.grid(column = 1, row = 1, padx = 10, pady = 10)
+def uploadAction():
+    filename = filedialog.askdirectory()
+    fileNameLabel['text'] = filename
+    fileNameLabel.grid(column = 1, row = 1, padx = 10, pady = 10)
+    
+    
+fileLocationLabel = ttk.Label(uploadTab, text = "Package Location:", font = ("Times",12))
+fileLocationLabel.grid(column = 0, row = 0, padx = 10, pady = 10)
+fileUploadButton = ttk.Button(uploadTab, text = "Choose File:", command = uploadAction)
+fileUploadButton.grid(column = 1, row = 0, padx = 10, pady = 10)
+
+
+nameLabel = ttk.Label(uploadTab, text = "Package Name:", font = ("Times",12))
+nameLabel.grid(column = 0, row = 2, padx = 10, pady = 10)
+nameText = tk.Entry(uploadTab, font = ("Times",12), width = 50)
+nameText.grid(column = 1, row = 2, padx = 10, pady = 10)
+
+versionLabel = ttk.Label(uploadTab, text = "Version Number:", font = ("Times",12))
+versionLabel.grid(column = 0, row = 3, padx = 10, pady = 10)
+versionText = tk.Entry(uploadTab, font = ("Times",12), width = 50)
+versionText.grid(column = 1, row = 3, padx = 10, pady = 10)
+
+descriptionLabel = ttk.Label(uploadTab, text = "Description:", font = ("Times",12))
+descriptionLabel.grid(column = 0, row = 4, padx = 10, pady = 10)
+descriptionText = tk.Text(uploadTab, font = ("Times",12), height = 5, width = 50)
+descriptionText.grid(column = 1, row = 4, padx = 10, pady = 10)
+
+
+def uploadCommand():
+    print(fileNameLabel['text'])
+    print(nameText.get())
+    print(versionText.get())
+    print(descriptionText.get("1.0","end-1c"))
+uploadButton = ttk.Button(uploadTab, command = uploadCommand, text = "Upload Package")
+uploadButton.grid(column = 0, row = 5, padx = 10, pady = 10)
+
 
 
 #assemble
