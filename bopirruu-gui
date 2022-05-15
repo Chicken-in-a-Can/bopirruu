@@ -80,7 +80,7 @@ def openPackagePage(featured = ""):
         pName = searchBar.get()
     packageScreen = tk.Tk()
     packageScreen.title(pName)
-    packageScreen.geometry("600x600")
+    packageScreen.geometry("700x700")
  
     infoAddress = "http://" + ip + "/bopirruu.php?getinfo=" + pName
     fileText = requests.get(infoAddress).text
